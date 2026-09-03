@@ -1,19 +1,14 @@
-package com.example.collectionquest.controller;
-
 import com.example.collectionquest.model.Anime;
 import com.example.collectionquest.service.AnimeService;
 import com.example.collectionquest.service.UserService;
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/admin")
@@ -61,19 +56,19 @@ public class AdminController {
                             @RequestParam("imageFile") MultipartFile imageFile) throws IOException {
 
         if (!imageFile.isEmpty()) {
-            String filename = imageFile.getOriginalFilename()
-                    .replaceAll("\\s+", "_")
-                    .replaceAll("[^a-zA-Z0-9._-]", "");
-
-            Path uploadPath = Paths.get("uploads");
-            Files.createDirectories(uploadPath);
-            try (InputStream inputStream = imageFile.getInputStream()) {
-                Files.copy(inputStream,
-                        uploadPath.resolve(filename),
-                        StandardCopyOption.REPLACE_EXISTING);
-            }
-            anime.setImageUrl(filename);
-        }
+        Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
+            "cloud_name", System.getenv("CLOUDINARY_CLOUD_NAME"),
+            "api_key",    System.getenv("CLOUDINARY_API_KEY"),
+            "api_secret", System.getenv("CLOUDINARY_API_SECRET")
+        ));
+    
+        Map result = cloudinary.uploader().upload(
+            imageFile.getBytes(), ObjectUtils.emptyMap()
+        );
+    
+        String imageUrl = (String) result.get("secure_url");
+        anime.setImageUrl(imageUrl);
+    }
 
         animeService.save(anime);
         return "redirect:/admin";
