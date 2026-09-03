@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Collection Quest</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<header>
+    <h1>Collection Quest</h1>
+    <nav>
+    <span th:if="${loggedInUser == null}">
+        <a href="/login">Login</a>
+        <a href="/signup">Sign Up</a>
+    </span>
+        <span th:if="${loggedInUser != null}">
+        <span th:if="${isAdmin}"><a href="/admin">Admin Panel</a></span>
+        <a href="/logout">Logout</a>
+    </span>
+    </nav>
+</header>
+
+<div class="anime-grid">
+    <div class="anime-card" th:each="anime : ${animes}">
+        <a th:href="@{/anime/{id}(id=${anime.id})}">
+            <img th:src="@{/{imageUrl}(imageUrl=${anime.imageUrl})}" th:alt="${anime.title}">
+            <div class="anime-card-info">
+                <h3 th:text="${anime.title}">Title</h3>
+                <p th:text="${anime.totalEpisodes} + ' Episodes'">Episodes</p>
+            </div>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

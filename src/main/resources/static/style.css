@@ -1,0 +1,409 @@
+/* ===== BASE ===== */
+body {
+    font-family: Arial, sans-serif;
+    background: #0d0d0d;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== HEADER ===== */
+header {
+    background: #1a1a2e;
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    color: #e94560;
+}
+
+header h1 a {
+    color: #e94560;
+    text-decoration: none;
+}
+
+nav a {
+    color: white;
+    margin-left: 16px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #e94560;
+}
+
+/* ===== HOME — ANIME GRID ===== */
+.anime-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 32px;
+    justify-content: center;
+}
+
+.anime-card {
+    background: #1a1a2e;
+    border-radius: 8px;
+    width: 180px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    text-align: center;
+    overflow: hidden;
+}
+
+.anime-card:hover {
+    transform: scale(1.05);
+}
+
+.anime-card img {
+    width: 180px;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+}
+
+.anime-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.anime-card-info {
+    padding: 10px;
+}
+
+.anime-card-info h3 {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+}
+
+.anime-card-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* ===== ANIME DETAIL ===== */
+.detail-wrapper {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+}
+
+.detail-wrapper img {
+    width: 240px;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.detail-info {
+    flex: 1;
+}
+
+.detail-info h2 {
+    color: #e94560;
+    margin-top: 0;
+}
+
+.detail-info p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.episodes-section {
+    padding: 0 40px 40px;
+}
+
+.episodes-section h3 {
+    color: #e94560;
+}
+
+.episode-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ep-btn {
+    background: #1a1a2e;
+    color: white;
+    border: 1px solid #e94560;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.ep-btn:hover {
+    background: #e94560;
+}
+
+/* ===== COMING SOON MODAL ===== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background: #1a1a2e;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #e94560;
+}
+
+.modal h2 {
+    color: #e94560;
+    margin-top: 0;
+}
+
+.modal button {
+    background: #e94560;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 16px;
+}
+
+/* ===== LOGIN & SIGNUP ===== */
+body.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.box {
+    background: #1a1a2e;
+    padding: 40px;
+    border-radius: 10px;
+    width: 320px;
+}
+
+.box h2 {
+    text-align: center;
+    color: #e94560;
+    margin-top: 0;
+}
+
+.box input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background: #0d0d0d;
+    color: white;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.box input::placeholder {
+    color: #888;
+}
+
+.box input:focus {
+    outline: none;
+    border-color: #e94560;
+}
+
+.box button {
+    width: 100%;
+    padding: 10px;
+    background: #e94560;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.box button:hover {
+    background: #c73652;
+}
+
+.error {
+    color: #e94560;
+    text-align: center;
+    margin: 8px 0;
+}
+
+.link {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.link a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.link a:hover {
+    color: #e94560;
+}
+
+/* ===== ADMIN LIST ===== */
+.content {
+    padding: 32px;
+}
+
+.add-btn {
+    background: #e94560;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.add-btn:hover {
+    background: #c73652;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 24px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+th {
+    background: #1a1a2e;
+    color: #e94560;
+}
+
+img.thumb {
+    width: 60px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+a.edit-btn {
+    color: #4fc3f7;
+    text-decoration: none;
+    margin-right: 12px;
+}
+
+a.del-btn {
+    color: #e94560;
+    text-decoration: none;
+}
+
+/* ===== ADMIN FORM ===== */
+.content h2 {
+    color: #e94560;
+}
+
+label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 4px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+input[type=text],
+input[type=number],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background: #1a1a2e;
+    color: white;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+input[type=text]:focus,
+input[type=number]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #e94560;
+}
+
+textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.current-img {
+    margin-top: 8px;
+}
+
+.current-img img {
+    width: 80px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.current-img p {
+    color: #aaa;
+    font-size: 13px;
+    margin: 4px 0;
+}
+
+input[type=file] {
+    margin-top: 8px;
+    color: #aaa;
+}
+
+button[type=submit] {
+    margin-top: 24px;
+    background: #e94560;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button[type=submit]:hover {
+    background: #c73652;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 12px;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.back:hover {
+    color: #e94560;
+}
+
+.hint {
+    color: #777;
+    font-size: 12px;
+    margin-top: 4px;
+}

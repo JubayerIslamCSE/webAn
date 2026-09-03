@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<header>
+  <h1>Admin Panel</h1>
+  <nav>
+    <a href="/admin/users">Users</a>
+    <a href="/home">View Site</a>
+    <a href="/logout">Logout</a>
+  </nav>
+</header>
+
+<div class="content">
+  <a href="/admin/anime/new" class="add-btn">+ Add Anime</a>
+
+  <table>
+    <tr>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Episodes</th>
+      <th>Actions</th>
+    </tr>
+    <tr th:each="anime : ${animes}">
+      <td>
+        <img class="thumb"
+             th:src="@{/{imageUrl}(imageUrl=${anime.imageUrl})}"
+             th:alt="${anime.title}">
+      </td>
+      <td th:text="${anime.title}"></td>
+      <td th:text="${anime.totalEpisodes}"></td>
+      <td>
+        <a class="edit-btn" th:href="@{/admin/anime/edit/{id}(id=${anime.id})}">Edit</a>
+        <a class="del-btn"
+           th:href="@{/admin/anime/delete/{id}(id=${anime.id})}"
+           onclick="return confirm('Delete this anime?')">Delete</a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>

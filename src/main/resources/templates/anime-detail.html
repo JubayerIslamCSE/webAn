@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${anime.title}">Anime Detail</title>
+  <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<header>
+  <h1><a href="/home">Collection Quest</a></h1>
+  <nav>
+    <a href="/logout">Logout</a>
+  </nav>
+</header>
+
+<div class="detail-wrapper">
+  <img th:src="@{/{imageUrl}(imageUrl=${anime.imageUrl})}" th:alt="${anime.title}">
+  <div class="detail-info">
+    <h2 th:text="${anime.title}">Title</h2>
+    <p th:text="${anime.description}">Description goes here.</p>
+    <p><strong>Total Episodes:</strong> <span th:text="${anime.totalEpisodes}"></span></p>
+  </div>
+</div>
+
+<div class="episodes-section">
+  <h3>Episodes</h3>
+  <div class="episode-grid">
+    <button class="ep-btn"
+            th:each="ep : ${episodes}"
+            th:text="'Episode ' + ${ep}"
+            onclick="showComingSoon()">
+    </button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="comingSoonModal">
+  <div class="modal">
+    <h2>🎬 Coming Soon!</h2>
+    <p>This episode will be available soon. Stay tuned!</p>
+    <button onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<script>
+  function showComingSoon() {
+    document.getElementById('comingSoonModal').classList.add('active');
+  }
+  function closeModal() {
+    document.getElementById('comingSoonModal').classList.remove('active');
+  }
+</script>
+
+</body>
+</html>

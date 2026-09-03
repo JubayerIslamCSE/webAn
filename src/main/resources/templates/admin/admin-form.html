@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Anime Form</title>
+  <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<header>
+  <h1>Admin Panel</h1>
+  <nav>
+    <a href="/admin">Back to List</a>
+    <a href="/logout">Logout</a>
+  </nav>
+</header>
+
+<div class="content">
+  <h2 th:text="${anime.id == null} ? 'Add Anime' : 'Edit Anime'"></h2>
+
+  <form action="/admin/anime/save" th:object="${anime}"
+        method="post" enctype="multipart/form-data">
+
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+    <input type="hidden" th:field="*{id}">
+    <input type="hidden" th:field="*{imageUrl}">
+
+    <label>Title</label>
+    <input type="text" th:field="*{title}" placeholder="e.g. Naruto" required>
+
+    <label>Description</label>
+    <textarea th:field="*{description}" placeholder="Short description of the anime..."></textarea>
+
+    <label>Total Episodes</label>
+    <input type="number" th:field="*{totalEpisodes}" min="1" required>
+
+    <label>Anime Image</label>
+    <div class="current-img" th:if="${anime.imageUrl != null and anime.imageUrl != ''}">
+      <p>Current image:</p>
+      <img th:src="@{/{imageUrl}(imageUrl=${anime.imageUrl})}" th:alt="${anime.title}">
+    </div>
+    <input type="file" name="imageFile" accept="image/*">
+    <p class="hint">Leave empty to keep the current image when editing.</p>
+
+    <button type="submit">Save Anime</button>
+  </form>
+  <a class="back" href="/admin">← Cancel</a>
+</div>
+
+</body>
+</html>
