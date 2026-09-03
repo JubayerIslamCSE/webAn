@@ -29,7 +29,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (username.equals("admin")) {
             return org.springframework.security.core.userdetails.User
                     .withUsername("admin")
-                    .password(passwordEncoder.encode("admin"))
+                    .password("{noop}admin")
                     .roles("ADMIN")
                     .build();
         }
