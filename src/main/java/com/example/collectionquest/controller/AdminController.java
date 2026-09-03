@@ -1,3 +1,5 @@
+package com.example.collectionquest.controller;
+
 import com.example.collectionquest.model.Anime;
 import com.example.collectionquest.service.AnimeService;
 import com.example.collectionquest.service.UserService;
