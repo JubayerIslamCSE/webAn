@@ -29,7 +29,7 @@
     <tr th:each="anime : ${animes}">
       <td>
         <img class="thumb"
-             th:src="@{/{imageUrl}(imageUrl=${anime.imageUrl})}"
+             th:src="@{anime.imageUrl}"
              th:alt="${anime.title}">
       </td>
       <td th:text="${anime.title}"></td>
