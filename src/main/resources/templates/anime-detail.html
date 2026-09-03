@@ -15,7 +15,7 @@
 </header>
 
 <div class="detail-wrapper">
-  <img th:src="@{/{imageUrl}(imageUrl=${anime.imageUrl})}" th:alt="${anime.title}">
+  <img th:src="${anime.imageUrl}" th:alt="${anime.title}">
   <div class="detail-info">
     <h2 th:text="${anime.title}">Title</h2>
     <p th:text="${anime.description}">Description goes here.</p>
